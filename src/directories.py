@@ -98,7 +98,6 @@ def delete_command(dirs: "dict[str, Directory]", args: "list[str]") -> None:
 def list_command(dirs: "dict[str, Directory]", tab_space = 0) -> str:
     result_srt = ""
     for dir_name, dir in dirs.items():
-        print(" " * tab_space + dir_name)
         result_srt += " " * tab_space + dir_name + "\n"
         if dir.subdirs:
             result_srt += list_command(dir.subdirs, tab_space + 2)
@@ -141,7 +140,7 @@ def main() -> "dict[str, Directory]":
                 # length of args is 0
                 if len(args) != 0:
                     print("LIST command does not take arguments")
-                list_command(dirs)
+                print(list_command(dirs), end="")
     return dirs
 
 if __name__ == "__main__":
